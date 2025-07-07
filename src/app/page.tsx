@@ -1,5 +1,7 @@
-import { Button } from "@/components/ui/button";
+import { HomeView } from "@/modules/home/ui/views/home-view";
 
-export default function Home() {
-  return <Button variant="custom">Click Me</Button>;
-}
+const Page = () => {
+  return <HomeView />;
+};
+
+export default Page;

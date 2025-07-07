@@ -7,6 +7,8 @@ import { OctagonAlertIcon } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
@@ -35,6 +37,7 @@ const formSchema = z
   });
 
 export const SignUpView = () => {
+  const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState<boolean>(false);
 
@@ -62,6 +65,7 @@ export const SignUpView = () => {
       {
         onSuccess: () => {
           setPending(false);
+          router.push("/");
         },
         onError: ({ error }) => {
           setPending(false);
@@ -207,7 +211,7 @@ export const SignUpView = () => {
                     type="button"
                     className="w-full"
                   >
-                    Google
+                    <FaGoogle />
                   </Button>
                   <Button
                     disabled={pending}
@@ -216,7 +220,7 @@ export const SignUpView = () => {
                     type="button"
                     className="w-full"
                   >
-                    Github
+                    <FaGithub />
                   </Button>
                 </div>
                 <div className="text-center text-sm">
